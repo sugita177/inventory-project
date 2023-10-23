@@ -22,18 +22,13 @@ class ArticleController extends Controller
             'remark'   => 'max:400'
         ]);
 
-        //$article = Article::create([
-        //    'name'     => $request-> name,  
-        //    'detail'   => $request-> detail,  
-        //    'category' => $request-> category,
-        //    'place'    => $request->place,   
-        //    'unit'     => $request->unit,   
-        //    'supplier' => $request->supplier,
-        //    'remark'   => $request->remark  
-        //]);
-
         $article = Article::create($validated);
         $request->session()->flash('message', '保存しました');
         return back();
+    }
+
+    public function index() {
+        $articles = Article::all();
+        return view('article.index', compact('articles'));
     }
 }
