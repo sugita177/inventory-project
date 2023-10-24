@@ -30,7 +30,8 @@ Route::get('article/create', [ArticleController::class, 'create'])
 Route::post('article', [ArticleController::class, 'store'])
 ->name('article.store');
 
-Route::get('article', [ArticleController::class, 'index']);
+Route::get('article', [ArticleController::class, 'index'])
+->name('article.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
