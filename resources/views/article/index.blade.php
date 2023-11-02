@@ -42,6 +42,12 @@
           </div>
           <!-- End Header -->
 
+          @if(session('message'))
+            <div class="text-red-600 font-bold">
+              {{session('message')}}
+            </div>
+          @endif
+
           <!-- Table -->
           <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead class="bg-gray-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
@@ -101,7 +107,11 @@
                 <tr>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->name }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
+                              <a href="{{route('article.show', $article)}}" class="text-blue-600">
+                                {{ $article->name }}
+                              </a>
+                            </span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">

@@ -33,6 +33,18 @@ Route::post('article', [ArticleController::class, 'store'])
 Route::get('article', [ArticleController::class, 'index'])
 ->name('article.index');
 
+Route::get('article/show/{article}', [ArticleController::class, 'show'])
+->name('article.show');
+
+Route::get('article/{article}/edit', [ArticleController::class, 'edit'])
+->name('article.edit');
+
+Route::patch('article/{article}', [ArticleController::class, 'update'])
+->name('article.update');
+
+Route::delete('article/{article}', [ArticleController::class, 'destroy'])
+->name('article.destroy');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
