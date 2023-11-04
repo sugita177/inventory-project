@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CheckController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,15 @@ Route::patch('article/{article}', [ArticleController::class, 'update'])
 
 Route::delete('article/{article}', [ArticleController::class, 'destroy'])
 ->name('article.destroy');
+
+Route::get('check', [CheckController::class, 'index'])
+->name('check.index');
+
+Route::get('check/create', [CheckController::class, 'create'])
+->name('check.create');
+
+Route::post('check', [CheckController::class, 'store'])
+->name('check.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

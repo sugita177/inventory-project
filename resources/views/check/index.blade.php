@@ -41,10 +41,10 @@
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
             <div>
               <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                在庫管理対象物品
+                在庫チェック一覧
               </h2>
               <p class="text-sm text-gray-600 dark:text-gray-400">
-                在庫管理対象のマスターデータ
+                これまでの在庫チェックの記録
               </p>
             </div>
 
@@ -56,7 +56,7 @@
 
                 <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 
                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" 
-                href="{{ route('article.create') }}">
+                href="{{ route('check.create') }}">
                   <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
@@ -79,101 +79,87 @@
               <tr>
                 <th scope="col" class="px-6 py-3 text-left border-l border-gray-200 dark:border-gray-700">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    品名
+                    開始日
                   </span>
                 </th>
 
                 <th scope="col" class="px-6 py-3 text-left">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    細目
+                    開始時刻
                   </span>
                 </th>
 
                 <th scope="col" class="px-6 py-3 text-left">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    分類
+                    終了日
                   </span>
                 </th>
 
                 <th scope="col" class="px-6 py-3 text-left">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    場所
+                    終了時刻
                   </span>
                 </th>
 
                 <th scope="col" class="px-6 py-3 text-left">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    管理単位
+                    確認者
                   </span>
                 </th>
 
                 <th scope="col" class="px-6 py-3 text-left">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    発注先
+                    状況
                   </span>
                 </th>
 
-                <th scope="col" class="px-6 py-3 text-left">
-                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    備考
-                  </span>
-                </th>
-
-                <th scope="col" class="px-6 py-3 text-left">
-                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    登録日
-                  </span>
-                </th>
               </tr>
             </thead>
 
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                @foreach($articles as $article)
+                @foreach($checks as $check)
                 <tr>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
                             <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
-                              <a href="{{route('article.show', $article)}}" class="text-blue-600">
-                                {{ $article->name }}
+                              <a href="#" class="text-blue-600">
+                                {{ $check->check_start_date }}
                               </a>
                             </span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->detail }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $check->check_start_time }}</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->category }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $check->check_end_date }}</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->place }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $check->check_end_time }}</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->unit }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $check->user->name }}</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->supplier }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
+                            @if($check->completed)
+                                完了
+                            @else
+                                チェック中
+                            @endif
+                            </span>
                         </div>
                     </td>
-                    <td class="h-px w-auto whitespace-nowrap">
-                        <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->remark }}</span>
-                        </div>
-                    </td>
-                    <td class="h-px w-auto whitespace-nowrap">
-                        <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->created_at }}</span>
-                        </div>
-                    </td>
+                    
                 </tr>
                 @endforeach
               
