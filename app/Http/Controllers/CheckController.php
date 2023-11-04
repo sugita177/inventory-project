@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Check;
+use App\Models\Article;
 
 class CheckController extends Controller
 {
@@ -27,5 +28,10 @@ class CheckController extends Controller
     public function index() {
         $checks = Check::all();
         return view('check.index', compact('checks'));
+    }
+
+    public function show(Check $check) {
+        $articles = Article::all();
+        return view('check.show', compact('check', 'articles'));
     }
 }

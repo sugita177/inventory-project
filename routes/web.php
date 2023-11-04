@@ -55,6 +55,12 @@ Route::get('check/create', [CheckController::class, 'create'])
 Route::post('check', [CheckController::class, 'store'])
 ->name('check.store');
 
+Route::get('check/show/{check}', [CheckController::class, 'show'])
+->name('check.show');
+
+Route::put('check/{check}/inventory', [InventoryController::class, 'store'])
+->name('inventory.store');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
