@@ -139,56 +139,74 @@
                 </thead>
 
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                    @foreach($articles as $article)
+                    @foreach($inventories as $inventory)
                     <tr>
-                        <input type="hidden" name="article_id" value="{{$article->id}}">
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
                                 <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
-                                <a href="{{route('article.show', $article)}}" class="text-blue-600">
-                                    {{ $article->name }}
+                                <a href="{{route('article.show', $inventory->article)}}" class="text-blue-600">
+                                    {{ $inventory->article->name }}
                                 </a>
                                 </span>
                             </div>
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
-                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->detail }}</span>
+                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $inventory->article->detail }}</span>
                             </div>
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
-                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->place }}</span>
+                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $inventory->article->place }}</span>
                             </div>
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
-                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->remark }}</span>
+                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $inventory->article->remark }}</span>
                             </div>
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
-                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200"></span>
+                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
+                                <x-input-error :messages="$errors->get('{{$check->id}}_{{$inventory->article->id}}_inventory_number')" class="mt-2" />
+                                  <input id="{{$check->id}}_{{$inventory->article->id}}_inventory_number" name="{{$check->id}}_{{$inventory->article->id}}_inventory_number" 
+                                  type="number" step="1" min="0" class="py-2 px-3 pr-11 block w-full border-gray-200 
+                                  shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" 
+                                  placeholder="" value="{{$inventory->inventory_number}}">
+                                </span>
                             </div>
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
-                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->unit }}</span>
+                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $inventory->article->unit }}</span>
                             </div>
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
-                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200"></span>
+                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
+                                  <x-input-error :messages="$errors->get('{{$check->id}}_{{$inventory->article->id}}_shortage_number')" class="mt-2" />
+                                  <input id="{{$check->id}}_{{$inventory->article->id}}_shortage_number" name="{{$check->id}}_{{$inventory->article->id}}_shortage_number" 
+                                  type="number" step="1" min="0" class="py-2 px-3 pr-11 block w-full border-gray-200 
+                                  shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" 
+                                  placeholder="" value="{{$inventory->shortage_number}}">
+                                </span>
                             </div>
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
-                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->unit }}</span>
+                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $inventory->article->unit }}</span>
                             </div>
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
-                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200"></span>
+                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
+                                <label for="{{$check->id}}_{{$inventory->article->id}}_checked" class="flex">
+                                  <input type="checkbox" class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none 
+                                  focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 
+                                  dark:focus:ring-offset-gray-800" 
+                                  id="{{$check->id}}_{{$inventory->article->id}}_checked">
+                                  <span class="sr-only">Checkbox</span>
+                                </label>
                             </div>
                         </td>
                         

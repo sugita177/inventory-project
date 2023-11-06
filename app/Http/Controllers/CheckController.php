@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Check;
 use App\Models\Article;
+use App\Models\Inventory;
 
 class CheckController extends Controller
 {
@@ -22,7 +23,26 @@ class CheckController extends Controller
 
         $check = Check::create($validated);
         $request->session()->flash('message', '新規作成しました');
-        return back();
+
+        $articles = Article::all();
+        foreach($articles as $article) {
+            $parameters = [
+                'inventory_number' => 0,
+                'shortage_number'  => 0,
+                'checked'          => false,
+            ];
+            $parameters['check_id'] = $check->id;
+            $parameters['article_id'] = $article->id;
+
+            $inventory = Inventory::create($parameters);
+        }
+
+        $inventories = Inventory::where('check_id', $check->id)->get();
+        return view('check.show', compact('check', 'inventories'));
+        //$invenroty_controller = app()->make('InventoryController');
+        //$invenroty_controller->store($check);
+        //return view('inventory.store', compact('check'));
+        //return back();
     }
 
     public function index() {

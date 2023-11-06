@@ -44,7 +44,6 @@ class ArticleController extends Controller
 
     public function update(Request $request, Article $article) {
         $validated = $request->validate([
-            //'name'     => 'required | max:20',
             'detail'   => 'max:20',
             'category' => 'required | max:20',
             'place'    => 'required | max:20',
@@ -63,7 +62,6 @@ class ArticleController extends Controller
     public function destroy(Request $request, Article $article) {
         $article->delete();
         $request->session()->flash('message', '削除しました');
-        //return redirect('article');
         return redirect()->route('article.index');
     }
 }
