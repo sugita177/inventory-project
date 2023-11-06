@@ -64,4 +64,8 @@ class ArticleController extends Controller
         $request->session()->flash('message', '削除しました');
         return redirect()->route('article.index');
     }
+
+    public function csvImport() {
+        
+    }
 }

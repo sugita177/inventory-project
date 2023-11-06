@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckController;
+use App\Http\Controllers\InventoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +59,8 @@ Route::post('check', [CheckController::class, 'store'])
 Route::get('check/show/{check}', [CheckController::class, 'show'])
 ->name('check.show');
 
-Route::put('check/{check}/inventory', [InventoryController::class, 'store'])
-->name('inventory.store');
+Route::patch('check/{check}/inventory', [InventoryController::class, 'update'])
+->name('inventory.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

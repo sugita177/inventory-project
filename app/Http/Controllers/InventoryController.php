@@ -28,21 +28,23 @@ class InventoryController extends Controller
 
     }
 
-    public function update() {
-        //$validated = $request->validate([
-        //    'name'     => 'required | max:20',
-        //    'detail'   => 'max:20',
-        //    'category' => 'required | max:20',
-        //    'place'    => 'required | max:20',
-        //    'unit'     => 'required | max:20',
-        //    'supplier' => 'required | max:40',
-        //    'remark'   => 'max:400'
-        //]);
-//
-        //$validated['user_id'] = auth()->id();
-//
-        //$article = Article::create($validated);
-        //$request->session()->flash('message', '保存しました');
-        //return back();
+    public function update(Request $request, Check $check) {
+        $inventories = Inventory::where('check_id', $check->id)->get();
+        foreach($inventories as $inventory) {
+            $validated = $request->validate([
+                ($inventory->id).'_inventory_number' => 'required | integer | min:0',
+                ($inventory->id).'_shortage_number'  => 'required | integer | min:0',
+                ($inventory->id).'_checked'          => 'required | boolean',
+            ]);
+            $parameters = [
+                'inventory_number' => $validated[($inventory->id).'_inventory_number'],
+                'shortage_number'  => $validated[($inventory->id).'_shortage_number' ],
+                'checked'          => $validated[($inventory->id).'_checked'         ]
+            ];
+            $inventory->update($parameters);
+        }
+        $request->session()->flash('message', '途中保存しました');
+        
+        return back();
     }
 }

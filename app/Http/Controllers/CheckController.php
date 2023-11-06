@@ -39,10 +39,6 @@ class CheckController extends Controller
 
         $inventories = Inventory::where('check_id', $check->id)->get();
         return view('check.show', compact('check', 'inventories'));
-        //$invenroty_controller = app()->make('InventoryController');
-        //$invenroty_controller->store($check);
-        //return view('inventory.store', compact('check'));
-        //return back();
     }
 
     public function index() {
@@ -51,7 +47,7 @@ class CheckController extends Controller
     }
 
     public function show(Check $check) {
-        $articles = Article::all();
-        return view('check.show', compact('check', 'articles'));
+        $inventories = Inventory::where('check_id', $check->id)->get();
+        return view('check.show', compact('check', 'inventories'));
     }
 }
