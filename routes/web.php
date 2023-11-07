@@ -62,6 +62,14 @@ Route::get('check/show/{check}', [CheckController::class, 'show'])
 Route::patch('check/{check}/inventory', [InventoryController::class, 'update'])
 ->name('inventory.update');
 
+Route::get('csv', function () {
+    return view('csv.index');
+})
+->name('csv.index');
+
+Route::post('article/csv_import', [ArticleController::class, 'csvImport'])
+->name('article.csv_import');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
