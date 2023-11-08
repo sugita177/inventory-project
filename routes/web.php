@@ -59,8 +59,8 @@ Route::post('check', [CheckController::class, 'store'])
 Route::get('check/show/{check}', [CheckController::class, 'show'])
 ->name('check.show');
 
-Route::get('check/edit/{check}', [CheckController::class, 'edit'])
-->name('check.edit');
+Route::get('check/confirm/{check}', [CheckController::class, 'confirmEdit'])
+->name('check.confirm_edit');
 
 Route::patch('check/confirm/{check}', [CheckController::class, 'confirm'])
 ->name('check.confirm');
@@ -74,9 +74,13 @@ Route::get('check/delete/{check}', [CheckController::class, 'deleteEdit'])
 Route::delete('check/{check}', [CheckController::class, 'destroy'])
 ->name('check.destroy');
 
-
 Route::patch('check/{check}/inventory', [InventoryController::class, 'update'])
 ->name('inventory.update');
+
+Route::get('inventory/state', function () {
+    return view('inventory.state');
+})
+->name('csv.index');
 
 Route::get('csv', function () {
     return view('csv.index');

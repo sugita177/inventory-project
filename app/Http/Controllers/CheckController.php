@@ -51,8 +51,8 @@ class CheckController extends Controller
         return view('check.show', compact('check', 'inventories'));
     }
 
-    public function edit(Check $check) {
-        return view('check.edit', compact('check'));
+    public function confirmEdit(Check $check) {
+        return view('check.confirm_edit', compact('check'));
     }
 
     public function confirm(Request $request, Check $check) {
@@ -78,7 +78,15 @@ class CheckController extends Controller
         return back();
     }
 
+    public function deleteEdit(Check $check) {
+        return view('check.delete_edit', compact('check'));
+    }
+
     public function destroy(Request $request, Check $check) {
+        $inventories = Inventory::where('check_id', $check->id)->get();
+        foreach($inventories as $inventory) {
+            $inventory->delete();
+        }
         $check->delete();
         $request->session()->flash('message', '削除しました');
         return redirect()->route('check.index');
