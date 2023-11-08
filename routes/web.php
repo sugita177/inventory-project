@@ -59,6 +59,22 @@ Route::post('check', [CheckController::class, 'store'])
 Route::get('check/show/{check}', [CheckController::class, 'show'])
 ->name('check.show');
 
+Route::get('check/edit/{check}', [CheckController::class, 'edit'])
+->name('check.edit');
+
+Route::patch('check/confirm/{check}', [CheckController::class, 'confirm'])
+->name('check.confirm');
+
+Route::get('check/cancel/{check}', [CheckController::class, 'cancel'])
+->name('check.cancel');
+
+Route::get('check/delete/{check}', [CheckController::class, 'deleteEdit'])
+->name('check.delete_edit');
+
+Route::delete('check/{check}', [CheckController::class, 'destroy'])
+->name('check.destroy');
+
+
 Route::patch('check/{check}/inventory', [InventoryController::class, 'update'])
 ->name('inventory.update');
 

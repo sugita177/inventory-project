@@ -50,4 +50,37 @@ class CheckController extends Controller
         $inventories = Inventory::where('check_id', $check->id)->get();
         return view('check.show', compact('check', 'inventories'));
     }
+
+    public function edit(Check $check) {
+        return view('check.edit', compact('check'));
+    }
+
+    public function confirm(Request $request, Check $check) {
+        $validated = $request->validate([
+            'check_end_date' => 'required',
+            'check_end_time' => 'required'
+        ]);
+
+        $validated['completed'] = true;
+
+        $check->update($validated);
+        $request->session()->flash('message', '在庫チェック完了を確定しました');
+        return back();
+    }
+
+    public function cancel(Request $request,Check $check) {
+        $validated['check_end_date'] = null;
+        $validated['check_end_time'] = null;
+        $validated['completed'] = false;
+
+        $check->update($validated);
+        $request->session()->flash('message', '在庫チェック完了を取り消しました');
+        return back();
+    }
+
+    public function destroy(Request $request, Check $check) {
+        $check->delete();
+        $request->session()->flash('message', '削除しました');
+        return redirect()->route('check.index');
+    }
 }

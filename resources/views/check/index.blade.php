@@ -113,6 +113,24 @@
                   </span>
                 </th>
 
+                <th scope="col" class="px-6 py-3 text-left">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-left">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                    
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-left">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                    
+                  </span>
+                </th>
+
               </tr>
             </thead>
 
@@ -121,11 +139,7 @@
                 <tr>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
-                              <a href="{{route('check.show', $check)}}" class="text-blue-600">
-                                {{ $check->check_start_date }}
-                              </a>
-                            </span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $check->check_start_date }}</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
@@ -156,6 +170,39 @@
                             @else
                                 チェック中
                             @endif
+                            </span>
+                        </div>
+                    </td>
+                    <td class="h-px w-auto whitespace-nowrap">
+                        <div class="px-6 py-2">
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
+                              @if(!($check->completed))
+                              <a href="{{route('check.show', $check)}}" class="text-blue-600">
+                                在庫チェックを行う
+                              </a>
+                              @else
+                              <span class="text-gray-600">
+                                在庫チェックを行う
+                              </span>
+                              @endif
+                            </span>
+                        </div>
+                    </td>
+                    <td class="h-px w-auto whitespace-nowrap">
+                        <div class="px-6 py-2">
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
+                              <a href="{{route('check.edit', $check)}}" class="text-blue-600">
+                                確定・取消
+                              </a>
+                            </span>
+                        </div>
+                    </td>
+                    <td class="h-px w-auto whitespace-nowrap">
+                        <div class="px-6 py-2">
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
+                              <a href="{{route('check.delete_edit', $check)}}" class="text-red-600">
+                                削除
+                              </a>
                             </span>
                         </div>
                     </td>
