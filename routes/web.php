@@ -77,10 +77,8 @@ Route::delete('check/{check}', [CheckController::class, 'destroy'])
 Route::patch('check/{check}/inventory', [InventoryController::class, 'update'])
 ->name('inventory.update');
 
-Route::get('inventory/state', function () {
-    return view('inventory.state');
-})
-->name('csv.index');
+Route::get('inventory/latest_state', [InventoryController::class, 'latestState'])
+->name('inventory.latest_state');
 
 Route::get('csv', function () {
     return view('csv.index');
