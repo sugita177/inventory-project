@@ -91,4 +91,31 @@ class CheckController extends Controller
         $request->session()->flash('message', '削除しました');
         return redirect()->route('check.index');
     }
+
+    public function orderIndex() {
+        $completed_checks = Check::where('completed', true)->get();
+        return view('check.order_index', compact('completed_checks'));
+    }
+
+    public function orderShow(Check $check) {
+        $suppliers = Article::select('supplier')
+                        ->groupBy('supplier')
+                        ->get();
+
+        $order_data = [];
+        foreach($suppliers as $supplier) {
+            $order_list = Inventory::select()->join('articles', 'articles.id' ,'=', 'inventories.article_id')
+                            ->where('shortage_number', '>', 0)
+                            ->where('supplier', $supplier->supplier)
+                            ->get();
+            dd($order_list);
+            $order_datum = [
+                'supplier' => $supplier,
+                'order_list' => $order_list
+            ];
+            $order_data[] = $order_datum;
+        }
+
+        return view('check.order_show', compact('order_data'));
+    }
 }

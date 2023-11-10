@@ -52,7 +52,7 @@ class InventoryController extends Controller
         $articles = Article::all();
         $latest_inventories = [];
         $inventories_joined = Inventory::select()->join('checks', 'checks.id' ,'=', 'inventories.check_id')->get();
-        //dd($inventories_joined);
+        
         foreach($articles as $article) {
             $inventory = $inventories_joined
                             ->where('article_id', $article->id)
@@ -67,7 +67,6 @@ class InventoryController extends Controller
                 //$latest_inventories[] = 'no_data';
             }
         }
-        //dd($latest_inventories);
         return view('inventory.latest_state', compact('latest_inventories'));
     }
 }

@@ -88,6 +88,12 @@ Route::get('csv', function () {
 Route::post('article/csv_import', [ArticleController::class, 'csvImport'])
 ->name('article.csv_import');
 
+Route::get('check/order/index', [CheckController::class, 'orderIndex'])
+->name('check.order_index');
+
+Route::get('check/order/show/{check}', [CheckController::class, 'orderShow'])
+->name('check.order_show');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

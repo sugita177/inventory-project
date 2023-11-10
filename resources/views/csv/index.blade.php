@@ -21,7 +21,7 @@
           <a class="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500" href="{{route('csv.index')}}">CSV読み込み</a>
         </div>
         <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
-          <a class="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500" href="#">発注書作成</a>
+          <a class="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500" href="{{route('check.order_index')}}">発注書作成</a>
         </div>
         <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
           <a class="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500" href="#">在庫状況時系列</a>
