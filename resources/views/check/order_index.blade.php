@@ -41,7 +41,7 @@
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
             <div>
               <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                発注書作成用
+                発注書作成
               </h2>
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 発注書を作成する在庫チェック表を選択してください(*チェック完了済みのみ対象)

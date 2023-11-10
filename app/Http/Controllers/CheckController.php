@@ -108,7 +108,6 @@ class CheckController extends Controller
                             ->where('shortage_number', '>', 0)
                             ->where('supplier', $supplier->supplier)
                             ->get();
-            dd($order_list);
             $order_datum = [
                 'supplier' => $supplier,
                 'order_list' => $order_list
