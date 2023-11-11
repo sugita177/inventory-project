@@ -202,12 +202,12 @@
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
                                 <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
-                                <label for="{{$inventory->id}}_checked" class="flex">
+                                <label for="checked_{{$inventory->id}}" class="flex">
                                   <input type="hidden" name="{{$inventory->id}}_checked" value="0">
                                   <input type="checkbox" class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none 
                                   focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 
                                   dark:focus:ring-offset-gray-800"  
-                                  id="{{$inventory->id}}_checked" name="{{$inventory->id}}_checked" value="1"
+                                  id="checked_{{$inventory->id}}" name="{{$inventory->id}}_checked" value="1"
                                   {{$inventory->checked == 1 ? 'checked':''}}>
                                   <span class="sr-only">Checkbox</span>
                                 </label>
@@ -256,5 +256,7 @@
   <!-- End Card -->
 </div>
 <!-- End Table Section -->
+<input type="text" id="test" value="test-before">
+@vite(['resources/js/check_show.js'])
 
 </x-app-layout>
