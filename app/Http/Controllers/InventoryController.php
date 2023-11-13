@@ -45,7 +45,7 @@ class InventoryController extends Controller
         }
         $request->session()->flash('message', '途中保存しました');
         
-        return back();
+        return view('check.show', compact('check', 'inventories'));
     }
 
     public function latestState() {
