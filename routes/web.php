@@ -18,8 +18,12 @@ use App\Http\Controllers\InventoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', function() {
+    return view('start');
 });
 
 Route::get('/dashboard', function () {
