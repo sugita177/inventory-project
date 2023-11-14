@@ -50,6 +50,11 @@
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 {{$check->check_start_date}} ~ {{$check->check_end_date}}
               </p>
+              <p class="text-sm ml-1 text-gray-600 dark:text-gray-400">
+                各品目ごとに在庫数と不足数と入力し、チェックボックスにチェックを入れてください。
+                チェックを入れることにより、その品目をチェックしたことになります。<br>
+                また、「途中保存」を押して内容をデータベースに反映させてください。
+              </p>
             </div>
 
             <div>
@@ -174,7 +179,8 @@
                                   <input id="{{$inventory->id}}_inventory_number" name="{{$inventory->id}}_inventory_number" 
                                   type="number" step="1" min="0" class="py-2 px-3 pr-11 block w-full border-gray-200 
                                   shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" 
-                                  placeholder="" value="{{$inventory->inventory_number}}">
+                                  placeholder="" value="{{$inventory->inventory_number}}"
+                                  {{$inventory->checked == 1 ? 'disabled':''}}>
                                 </span>
                             </div>
                         </td>
@@ -190,7 +196,8 @@
                                   <input id="{{$inventory->id}}_shortage_number" name="{{$inventory->id}}_shortage_number" 
                                   type="number" step="1" min="0" class="py-2 px-3 pr-11 block w-full border-gray-200 
                                   shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" 
-                                  placeholder="" value="{{$inventory->shortage_number}}">
+                                  placeholder="" value="{{$inventory->shortage_number}}"
+                                  {{$inventory->checked == 1 ? 'disabled':''}}>
                                 </span>
                             </div>
                         </td>

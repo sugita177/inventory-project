@@ -60,6 +60,17 @@
           
           <!-- Card Section -->
     <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <p class="mb-1 text-sm text-gray-600 dark:text-white">
+                  CSVファイルは下記の例のようにしてください。第1行目は読み込み時には無視されます。<br>
+                  </p>
+      <p class="ml-3 mb-3 text-sm text-gray-600 dark:text-white">
+        (例)<br>
+        名称,細目,分類,場所,単位,発注先,備考<br>
+        ラッカーシンナー,,ペンキ,ペンキ棚,缶,田中ペンキ店<br>
+        電気配線,黒色,電気,電気棚,巻,宮崎電気<br>
+        溶接ガス,酸素,溶接,ガス置き場,ボンベ,福山ガス
+      </p>
+      
     <form method="post" enctype="multipart/form-data" action="{{ route('article.csv_import') }}">
         @csrf
         <!-- Card -->

@@ -52,12 +52,72 @@
     <div class="max-w-[85rem] mx-auto min-h-screen bg-white border-x-gray-200 py-10 px-4 sm:px-6 lg:px-8 xl:border-x dark:bg-gray-800 dark:border-x-gray-700">
       <!-- Page Heading -->
       <header class="max-w-3xl">
-        <a href="{{ route('article.index') }}">
-            <p class="mb-2 text-sm font-semibold text-blue-600">システムを使用する</p>
-        </a>
-        <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">在庫管理システムへようこそ</h1>
-        <p class="mt-2 text-lg text-gray-800 dark:text-gray-400">システムを使用するためには、ログインをしてください</p>
-      </header>
+        @if(Route::has('login'))
+          @auth
+          <a href="{{ route('article.index') }}">
+              <p class="mb-2 text-sm font-semibold text-blue-600">システムを使用する</p>
+          </a>
+          @else
+            <p class="mb-2 text-sm font-semibold text-gray-600 dark:text-gray-400">システムを使用するためには、ログインをしてください
+              <br>「メールアドレス: test@example.com パスワード: 12345678」でログインできます
+            </p>
+          @endauth
+        @endif
+        </header>
+        <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl my-2 dark:text-white">在庫管理システムへようこそ</h1>
+            <h2 class="block text-1xl font-bold text-gray-800 sm:text-2xl mt-2 dark:text-white">作成動機</h2>
+            <p class="mt-2 ml-2 text-base text-gray-800 dark:text-gray-400">
+              一時担当していた在庫管理をしていく中で、業務の効率化と時間節約のためのシステムがあれば便利だと思ったのがきっかけです。<br>
+              実際に在庫管理をしていた中で出てきたアイデアをもとに作成しています。
+            </p>
+            <h2 class="block text-2xl font-bold text-gray-800 sm:text-2xl mt-2 dark:text-white">機能</h2>
+              <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">在庫対象品データ登録・編集・削除</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                在庫管理の対象となる物品を登録・編集・削除します。<br>
+                登録データ項目は置き場所や発注先など、在庫管理の一連のプロセスに必要だと考えられるものを採用しました。
+              </p>
+              <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">在庫チェック機能</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                実際に在庫のチェックをする時に用いる機能です。<br>
+                品目ごとに在庫数と不足数を入力し、チェックの完了をしています。
+              </p>
+              <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">在庫状況の確認</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                在庫チェックのデータ履歴から、現在の在庫状況を表示します。
+              </p>
+              <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">データCSV読み込み</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                在庫管理の対象となる物品データの登録をCSVファイルをインポートして行います。<br>
+                大量のデータが存在するときに役に立つ機能です。
+              </p>
+              <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">発注書作成</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                完了済みの在庫チェック記録から不足分の発注書を作成します。<br>
+                発注書出力の確認画面まで実装しています。
+              </p>
+            <h2 class="block text-2xl font-bold text-gray-800 sm:text-2xl mt-2 dark:text-white">これから実装したいこと</h2>
+            <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">選択・検索機能</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                物品の分類や発注先から選択・検索する機能の実装。
+              </p>
+              <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">在庫状況の可視化・グラフ化</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                各データから在庫数の時系列推移の折れ線グラフや、在庫品の分類別の円グラフなど、可視化する機能の実装。<br>
+                Chart.jsを使用する予定。
+              </p>
+              <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">発注書Excel出力</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                発注書を発注先ごとにExcel出力する機能。
+              </p>
+              <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">エラー処理・バリデーションチェックなど</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                ログイン関係のエラー処理やCSV読み込み時のバリデーションチェック等の実装。
+              </p>
+              <h3 class="block ml-1 text-1xl font-bold text-gray-800 sm:text-1.5xl mt-1 dark:text-white">画面構成の見直し</h3>
+              <p class="mt-1 ml-2 text-base text-gray-800 dark:text-gray-400">
+                ユーティリティ向上のために、画面の構成や画面遷移などを見直す。
+              </p>
+      
       <!-- End Page Heading -->
     </div>
   </main>
