@@ -106,6 +106,7 @@ class CheckController extends Controller
         foreach($suppliers as $supplier) {
             $order_list = Inventory::select()->join('articles', 'articles.id' ,'=', 'inventories.article_id')
                             ->where('check_id', $check->id)
+                            ->where('checked', true)
                             ->where('shortage_number', '>', 0)
                             ->where('supplier', $supplier->supplier)
                             ->get();
