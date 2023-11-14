@@ -5,7 +5,7 @@ tableRows.forEach(function(tr) {
     const checkBox = document.getElementById(`${checkBoxId}`);
     checkBox.addEventListener('change', () => {
         inputs.forEach(function(input) {
-            input.disabled = checkBox.checked;
+            input.readonly = checkBox.checked;
         })
     })
 })

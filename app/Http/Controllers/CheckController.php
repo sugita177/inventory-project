@@ -22,7 +22,7 @@ class CheckController extends Controller
         $validated['user_id'] = auth()->id();
 
         $check = Check::create($validated);
-        $request->session()->flash('message', '新規作成しました');
+        $request->session()->flash('message', '在庫チェック表を新規作成しました');
 
         $articles = Article::all();
         foreach($articles as $article) {

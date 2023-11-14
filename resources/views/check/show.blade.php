@@ -180,7 +180,7 @@
                                   type="number" step="1" min="0" class="py-2 px-3 pr-11 block w-full border-gray-200 
                                   shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" 
                                   placeholder="" value="{{$inventory->inventory_number}}"
-                                  {{$inventory->checked == 1 ? 'disabled':''}}>
+                                  {{$inventory->checked == 1 ? 'readonly':''}}>
                                 </span>
                             </div>
                         </td>
@@ -197,7 +197,7 @@
                                   type="number" step="1" min="0" class="py-2 px-3 pr-11 block w-full border-gray-200 
                                   shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" 
                                   placeholder="" value="{{$inventory->shortage_number}}"
-                                  {{$inventory->checked == 1 ? 'disabled':''}}>
+                                  {{$inventory->checked == 1 ? 'readonly':''}}>
                                 </span>
                             </div>
                         </td>
