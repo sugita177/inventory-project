@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
+        <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Profile') }}
+            </h2>
+            <button class="bg-gray-400 hover:bg-gray-300 text-white rounded px-4 py-2" onClick="history.back()" >戻る</button>
+        </div>
     </x-slot>
 
     <div class="py-12">
