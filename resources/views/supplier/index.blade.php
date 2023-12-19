@@ -11,10 +11,10 @@
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
             <div>
               <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                保管場所一覧
+                発注先一覧
               </h2>
               <p class="text-sm text-gray-600 dark:text-gray-400">
-                在庫管理対象の保管場所の一覧表
+                在庫管理対象の発注先の一覧表
               </p>
             </div>
 
@@ -26,7 +26,7 @@
 
                 <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 
                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" 
-                href="{{ route('place.create') }}">
+                href="{{ route('supplier.create') }}">
                   <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
@@ -49,44 +49,77 @@
               <tr>
                 <th scope="col" class="px-6 py-3 text-left border-l border-gray-200 dark:border-gray-700">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    分類名
+                    発注先
                   </span>
                 </th>
 
                 <th scope="col" class="px-6 py-3 text-left">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    詳細
+                    郵便番号
                   </span>
                 </th>
 
                 <th scope="col" class="px-6 py-3 text-left">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    登録日
+                    住所
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-left">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                    電話番号
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-left">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                    FAX番号
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-left">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                    備考
                   </span>
                 </th>
               </tr>
             </thead>
 
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                @foreach($places as $place)
+                @foreach($suppliers as $supplier)
                 <tr>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
                             <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">
-                              <a href="{{route('place.show', $place)}}" class="text-blue-600">
-                                {{ $place->name }}
+                              <a href="{{route('supplier.show', $supplier)}}" class="text-blue-600">
+                                {{ $supplier->name }}
                               </a>
                             </span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $place->detail }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->posting_code }}</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $place->created_at }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->address }}</span>
+                        </div>
+                    </td>
+                    <td class="h-px w-auto whitespace-nowrap">
+                        <div class="px-6 py-2">
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->telephone_number }}</span>
+                        </div>
+                    </td>
+                    <td class="h-px w-auto whitespace-nowrap">
+                        <div class="px-6 py-2">
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->fax_number }}</span>
+                        </div>
+                    </td>
+                    <td class="h-px w-auto whitespace-nowrap">
+                        <div class="px-6 py-2">
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->remark }}</span>
                         </div>
                     </td>
                 </tr>
@@ -100,7 +133,7 @@
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
             <div>
               <p class="text-sm text-gray-600 dark:text-gray-400">
-                <span class="font-semibold text-gray-800 dark:text-gray-200">{{ count($places) }}</span> 項目
+                <span class="font-semibold text-gray-800 dark:text-gray-200">{{ count($suppliers) }}</span> 項目
               </p>
             </div>
 
