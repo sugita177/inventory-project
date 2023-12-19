@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +100,73 @@ Route::get('check/order/index', [CheckController::class, 'orderIndex'])
 
 Route::get('check/order/show/{check}', [CheckController::class, 'orderShow'])
 ->name('check.order_show');
+
+
+Route::get('category/create', [CategoryController::class, 'create'])
+->name('category.create');
+
+Route::post('category', [CategoryController::class, 'store'])
+->name('category.store');
+
+Route::get('category', [CategoryController::class, 'index'])
+->name('category.index');
+
+Route::get('category/show/{category}', [CategoryController::class, 'show'])
+->name('category.show');
+
+Route::get('category/edit/{category}', [CategoryController::class, 'edit'])
+->name('category.edit');
+
+Route::patch('category/{category}', [CategoryController::class, 'update'])
+->name('category.update');
+
+Route::delete('category/{category}', [CategoryController::class, 'destroy'])
+->name('category.destroy');
+
+
+Route::get('place/create', [PlaceController::class, 'create'])
+->name('place.create');
+
+Route::post('place', [PlaceController::class, 'store'])
+->name('place.store');
+
+Route::get('place', [PlaceController::class, 'index'])
+->name('place.index');
+
+Route::get('place/show/{place}', [PlaceController::class, 'show'])
+->name('place.show');
+
+Route::get('place/edit/{place}', [PlaceController::class, 'edit'])
+->name('place.edit');
+
+Route::patch('place/{place}', [PlaceController::class, 'update'])
+->name('place.update');
+
+Route::delete('place/{place}', [PlaceController::class, 'destroy'])
+->name('place.destroy');
+
+
+Route::get('supplier/create', [SupplierController::class, 'create'])
+->name('supplier.create');
+
+Route::post('supplier', [SupplierController::class, 'store'])
+->name('supplier.store');
+
+Route::get('supplier', [SupplierController::class, 'index'])
+->name('supplier.index');
+
+Route::get('supplier/show/{supplier}', [SupplierController::class, 'show'])
+->name('supplier.show');
+
+Route::get('supplier/edit/{supplier}', [SupplierController::class, 'edit'])
+->name('supplier.edit');
+
+Route::patch('supplier/{supplier}', [SupplierController::class, 'update'])
+->name('supplier.update');
+
+Route::delete('supplier/{supplier}', [SupplierController::class, 'destroy'])
+->name('supplier.destroy');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

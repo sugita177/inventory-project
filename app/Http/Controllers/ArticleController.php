@@ -22,7 +22,6 @@ class ArticleController extends Controller
     }
 
     public function store(Request $request) {
-        //dd($request);
         $validated = $request->validate([
             'name'     => 'required | max:20',
             'detail'   => 'max:20',
