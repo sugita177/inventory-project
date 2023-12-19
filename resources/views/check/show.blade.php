@@ -164,7 +164,7 @@
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
                             <div class="px-6 py-2">
-                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $inventory->article->place }}</span>
+                                <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $inventory->article->place->name }}</span>
                             </div>
                         </td>
                         <td class="h-px w-auto whitespace-nowrap">
@@ -263,7 +263,6 @@
   <!-- End Card -->
 </div>
 <!-- End Table Section -->
-<input type="text" id="test" value="test-before">
 @vite(['resources/js/check_show.js'])
 
 </x-app-layout>
