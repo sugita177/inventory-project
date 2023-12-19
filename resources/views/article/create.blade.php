@@ -36,19 +36,27 @@
                     </div>
 
                     <div class="space-y-2">
-                        <label for="category" class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                        <label for="category_id" class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                         分類
                         </label>
-                        <x-input-error :messages="$errors->get('category')" class="mt-2" />
-                        <input id="category" name="category" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="分類" value="{{old('category')}}">
+                        <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
+                        <select id="category_id" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                        </select>
                     </div>
 
                     <div class="space-y-2">
-                        <label for="place" class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                        <label for="place_id" class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                         場所
                         </label>
-                        <x-input-error :messages="$errors->get('place')" class="mt-2" />
-                        <input id="place" name="place" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="場所" value="{{old('place')}}">
+                        <x-input-error :messages="$errors->get('place_id')" class="mt-2" />
+                        <select id="place_id" name="place_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        @foreach($places as $place)
+                            <option value="{{ $place->id }}">{{ $place->name }}</option>
+                        @endforeach
+                        </select>
                     </div>
 
                     <div class="space-y-2">
@@ -60,11 +68,15 @@
                     </div>
 
                     <div class="space-y-2">
-                        <label for="supplier" class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                        <label for="supplier_id" class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                         発注先
                         </label>
-                        <x-input-error :messages="$errors->get('supplier')" class="mt-2" />
-                        <input id="supplier" name="supplier" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="発注先" value="{{old('supplier')}}">
+                        <x-input-error :messages="$errors->get('supplier_id')" class="mt-2" />
+                        <select id="supplier_id" name="supplier_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        @foreach($suppliers as $supplier)
+                            <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                        @endforeach
+                        </select>
                     </div>
 
                     <div class="space-y-2">

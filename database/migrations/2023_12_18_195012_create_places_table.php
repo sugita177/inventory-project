@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('detail');
+            $table->text('detail')->nullable();
             $table->timestamps();
         });
     }

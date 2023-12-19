@@ -116,12 +116,12 @@
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->category }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->category->name }}</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->place }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->place->name }}</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
@@ -131,7 +131,7 @@
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->supplier }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->supplier->name }}</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">

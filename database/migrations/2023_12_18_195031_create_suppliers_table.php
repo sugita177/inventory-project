@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('posting_code');
             $table->string('telephone_number');
             $table->string('fax_number');            
-            $table->text('remark');
+            $table->text('remark')->nullable();
             $table->timestamps();
         });
     }

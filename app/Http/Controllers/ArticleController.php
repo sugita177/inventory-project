@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Category;
+use App\Models\Place;
+use App\Models\Supplier;
 
 use Goodby\CSV\Import\Standard\LexerConfig;
 use Goodby\CSV\Import\Standard\Lexer;
@@ -12,17 +15,21 @@ use Goodby\CSV\Import\Standard\Interpreter;
 class ArticleController extends Controller
 {
     public function create() {
-        return view('article.create');
+        $categories = Category::All();
+        $places = Place::All();
+        $suppliers = Supplier::All();
+        return view('article.create', compact('categories', 'places', 'suppliers'));
     }
 
     public function store(Request $request) {
+        //dd($request);
         $validated = $request->validate([
             'name'     => 'required | max:20',
             'detail'   => 'max:20',
-            'category' => 'required | max:20',
-            'place'    => 'required | max:20',
+            'category_id' => 'required | integer',
+            'place_id'    => 'required | integer',
             'unit'     => 'required | max:20',
-            'supplier' => 'required | max:40',
+            'supplier_id' => 'required | integer',
             'remark'   => 'max:400'
         ]);
 
@@ -43,16 +50,19 @@ class ArticleController extends Controller
     }
 
     public function edit(Article $article) {
-        return view('article.edit', compact('article'));
+        $categories = Category::All();
+        $places = Place::All();
+        $suppliers = Supplier::All();
+        return view('article.edit', compact('article', 'categories', 'places', 'suppliers'));
     }
 
     public function update(Request $request, Article $article) {
         $validated = $request->validate([
             'detail'   => 'max:20',
-            'category' => 'required | max:20',
-            'place'    => 'required | max:20',
+            'category_id' => 'required | integer',
+            'place_id'    => 'required | integer',
             'unit'     => 'required | max:20',
-            'supplier' => 'required | max:40',
+            'supplier_id' => 'required | integer',
             'remark'   => 'max:400'
         ]);
 

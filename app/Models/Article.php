@@ -17,6 +17,19 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function place() {
+        return $this->belongsTo(Place::class);
+    }
+
+    public function supplier() {
+        return $this->belongsTo(Supplier::class);
+    }
+
+
     public function inventories() {
         return $this->hasMany(Inventory::class);
     }

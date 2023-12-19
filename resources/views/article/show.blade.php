@@ -61,7 +61,7 @@
             分類
           </h3>
           <p class="mt-1 text-gray-500">
-          {{$article->category}}
+          {{$article->category->name}}
           </p>
         </div>
       </div>
@@ -75,7 +75,7 @@
             場所
           </h3>
           <p class="mt-1 text-gray-500">
-          {{$article->place}}
+          {{$article->place->name}}
           </p>
         </div>
       </div>
@@ -103,7 +103,7 @@
             発注先
           </h3>
           <p class="mt-1 text-gray-500">
-          {{$article->supplier}}
+          {{$article->supplier->name}}
           </p>
         </div>
       </div>
