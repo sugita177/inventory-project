@@ -12,7 +12,7 @@
                     {{ session('message') }}
                 </div>
             @endif
-    <form method="post" action="{{ route('check.destroy',$check) }}">
+    <form id="deleteForm" method="post" action="{{ route('check.destroy',$check) }}">
         @csrf
         @method('delete')
         <!-- Card -->
@@ -75,4 +75,5 @@
     </form>
     </div>
     <!-- End Card Section -->
+    @vite(['resources/js/confirm_delete.js'])
 </x-app-layout>

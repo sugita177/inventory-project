@@ -165,7 +165,7 @@
                 <x-primary-button class="inline-flex justify-center items-center">編集</x-primary-button>
                 </a>
 
-                <form method="post" action="{{route('article.destroy', $article)}}" >
+                <form id="deleteForm" method="post" action="{{route('article.destroy', $article)}}" >
                     @csrf
                     @method('delete')
                     <x-primary-button class="bg-red-700 ml-2 inline-flex justify-center items-center">削除</x-primary-button>
@@ -180,5 +180,6 @@
   <!-- End Card -->
 </div>
 <!-- End Table Section -->
+@vite(['resources/js/confirm_delete.js'])
 
 </x-layouts.inventory-manager>

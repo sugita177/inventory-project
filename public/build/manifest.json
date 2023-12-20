@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-09cde050.css",
+    "file": "assets/app-b50e2792.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -13,5 +13,10 @@
     "file": "assets/check_show-955aef03.js",
     "isEntry": true,
     "src": "resources/js/check_show.js"
+  },
+  "resources/js/confirm_delete.js": {
+    "file": "assets/confirm_delete-cf76c61d.js",
+    "isEntry": true,
+    "src": "resources/js/confirm_delete.js"
   }
 }
