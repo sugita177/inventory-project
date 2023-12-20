@@ -38,6 +38,7 @@ class PlaceController extends Controller
 
     public function update(Request $request, Place $place) {
         $validated = $request->validate([
+            'name'     => 'required | max:20',
             'detail'   => 'max:400',
         ]);
 

@@ -10,20 +10,21 @@
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
             <div>
               <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                {{ $article->name }}
+                {{ $supplier->name }}
               </h2>
               <p class="text-sm text-gray-600 dark:text-gray-400">
-                在庫対象品目の詳細
+                発注先の詳細
               </p>
             </div>
 
-            
-            <div class="inline-flex gap-x-2">
-                <a href="{{ route('article.index') }}">
+            <div>
+              <div class="inline-flex gap-x-2">
+                <a href="{{ route('supplier.index') }}">
                     <button type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
                     一覧画面へ
                     </button>
                 </a>
+              </div>
             </div>
           </div>
           <!-- End Header -->
@@ -52,25 +53,12 @@
                 <tr>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">品名</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">発注先名</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->name }}</span>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="h-px w-auto whitespace-nowrap">
-                        <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">細目</span>
-                        </div>
-                    </td>
-                    <td class="h-px w-auto whitespace-nowrap">
-                        <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->detail }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->name }}</span>
                         </div>
                     </td>
                 </tr>
@@ -78,25 +66,12 @@
                 <tr>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">分類</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">郵便番号</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->category->name }}</span>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="h-px w-auto whitespace-nowrap">
-                        <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">場所</span>
-                        </div>
-                    </td>
-                    <td class="h-px w-auto whitespace-nowrap">
-                        <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->place->name }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->posting_code }}</span>
                         </div>
                     </td>
                 </tr>
@@ -104,12 +79,12 @@
                 <tr>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">管理単位</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">住所</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->unit }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->address }}</span>
                         </div>
                     </td>
                 </tr>
@@ -117,12 +92,25 @@
                 <tr>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">発注先</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">電話番号</span>
                         </div>
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->supplier->name }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->telephone_number }}</span>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="h-px w-auto whitespace-nowrap">
+                        <div class="px-6 py-2">
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">FAX番号</span>
+                        </div>
+                    </td>
+                    <td class="h-px w-auto whitespace-nowrap">
+                        <div class="px-6 py-2">
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->fax_number }}</span>
                         </div>
                     </td>
                 </tr>
@@ -135,7 +123,7 @@
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->remark }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->remark }}</span>
                         </div>
                     </td>
                 </tr>
@@ -148,7 +136,7 @@
                     </td>
                     <td class="h-px w-auto whitespace-nowrap">
                         <div class="px-6 py-2">
-                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $article->created_at }}</span>
+                            <span class="font-semibold text-sm text-gray-800 dark:text-gray-200">{{ $supplier->created_at }}</span>
                         </div>
                     </td>
                 </tr>
@@ -161,11 +149,11 @@
           <!-- Footer -->
           <div class="px-6 py-4 grid gap-3 md:flex flex-row-reverse md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
             <div class="mt-1 grid sm:flex gap-2 ">
-                <a href="{{route('article.edit', $article)}}" >
+                <a href="{{route('supplier.edit', $supplier)}}" >
                 <x-primary-button class="inline-flex justify-center items-center">編集</x-primary-button>
                 </a>
 
-                <form method="post" action="{{route('article.destroy', $article)}}" >
+                <form method="post" action="{{route('supplier.destroy', $supplier)}}" >
                     @csrf
                     @method('delete')
                     <x-primary-button class="bg-red-700 ml-2 inline-flex justify-center items-center">削除</x-primary-button>
