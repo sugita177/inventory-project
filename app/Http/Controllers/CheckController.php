@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Check;
 use App\Models\Article;
 use App\Models\Inventory;
+use App\Models\Supplier;
 
 class CheckController extends Controller
 {
@@ -49,6 +50,11 @@ class CheckController extends Controller
     public function show(Check $check) {
         $inventories = Inventory::where('check_id', $check->id)->get();
         return view('check.show', compact('check', 'inventories'));
+    }
+
+    public function showChecked(Check $check) {
+        $inventories = Inventory::where('check_id', $check->id)->get();
+        return view('check.show_checked', compact('check', 'inventories'));
     }
 
     public function confirmEdit(Check $check) {
@@ -98,9 +104,7 @@ class CheckController extends Controller
     }
 
     public function orderShow(Check $check) {
-        $suppliers = Article::select('supplier')
-                        ->groupBy('supplier')
-                        ->get();
+        $suppliers = Supplier::where('name', '!=', '未登録')->get();
 
         $order_data = [];
         foreach($suppliers as $supplier) {
@@ -108,15 +112,19 @@ class CheckController extends Controller
                             ->where('check_id', $check->id)
                             ->where('checked', true)
                             ->where('shortage_number', '>', 0)
-                            ->where('supplier', $supplier->supplier)
+                            ->where('supplier_id', $supplier->id)
                             ->get();
-            $order_datum = [
-                'supplier' => $supplier,
-                'order_list' => $order_list
-            ];
-            $order_data[] = $order_datum;
+            if(count($order_list) > 0) {
+                $order_datum = [
+                    'supplier' => $supplier,
+                    'order_list' => $order_list
+                ];
+                $order_data[] = $order_datum;
+            }
+            
         }
 
+        //dd($order_data);
         return view('check.order_show', compact('order_data'));
     }
 }

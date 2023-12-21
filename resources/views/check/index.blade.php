@@ -156,9 +156,9 @@
                                 在庫チェックを行う
                               </a>
                               @else
-                              <span class="text-gray-600">
-                                在庫チェックを行う
-                              </span>
+                              <a href="{{route('check.show_checked', $check)}}" class="text-white-600">
+                                在庫チェックを見る
+                              </a>
                               @endif
                             </span>
                         </div>

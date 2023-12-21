@@ -66,6 +66,9 @@ Route::post('check', [CheckController::class, 'store'])
 Route::get('check/show/{check}', [CheckController::class, 'show'])
 ->name('check.show');
 
+Route::get('check/show_checked/{check}', [CheckController::class, 'showChecked'])
+->name('check.show_checked');
+
 Route::get('check/confirm/{check}', [CheckController::class, 'confirmEdit'])
 ->name('check.confirm_edit');
 

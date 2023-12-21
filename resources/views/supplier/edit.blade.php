@@ -7,20 +7,20 @@
                 <div class="text-red-600 font-bold">
                     {{ session('message') }}
                 </div>
-            @endif
-    <form method="post" action="{{ route('supplier.store') }}">
+    @endif
+    <form method="post" action="{{ route('supplier.update', $supplier) }}">
         @csrf
+        @method('patch')
         <!-- Card -->
         <div class="bg-white rounded-xl shadow dark:bg-slate-900">
             <!-- Header -->
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
             <div>
               <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                発注先の新規登録
+                発注先の内容更新
               </h2>
               <p class="text-sm text-gray-600 dark:text-gray-400">
-                下項目を入力し、登録してください
-
+                下項目の変更箇所を修正し、更新してください
               </p>
             </div>
             <a href="{{ route('supplier.index') }}">
@@ -28,8 +28,6 @@
                     一覧画面へ
                 </button>
             </a>
-
-            
           </div>
           <!-- End Header -->
             <div class="pt-0 p-4 sm:pt-0 sm:p-7">
@@ -40,7 +38,7 @@
                         発注先名
                         </label>
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                        <input id="name" name="name" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="発注先名" value="{{old('name')}}">
+                        <input id="name" name="name" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="発注先名" value="{{old('name', $supplier->name)}}">
                     </div>
 
                     <div class="space-y-2">
@@ -48,7 +46,7 @@
                         郵便番号
                         </label>
                         <x-input-error :messages="$errors->get('posting_code')" class="mt-2" />
-                        <input id="posting_code" name="posting_code" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="郵便番号xxx-xxxx" value="{{old('posting_code')}}">
+                        <input id="posting_code" name="posting_code" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="郵便番号xxx-xxxx" value="{{old('posting_code', $supplier->posting_code)}}">
                     </div>
 
                     <div class="space-y-2">
@@ -56,7 +54,7 @@
                         住所
                         </label>
                         <x-input-error :messages="$errors->get('address')" class="mt-2" />
-                        <input id="address" name="address" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="住所" value="{{old('address')}}">
+                        <input id="address" name="address" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="住所" value="{{old('address', $supplier->address)}}">
                     </div>
 
                     <div class="space-y-2">
@@ -64,7 +62,7 @@
                         電話番号
                         </label>
                         <x-input-error :messages="$errors->get('telephone_number')" class="mt-2" />
-                        <input id="telephone_number" name="telephone_number" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="電話番号" value="{{old('telephone_number')}}">
+                        <input id="telephone_number" name="telephone_number" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="電話番号" value="{{old('telephone_number', $supplier->telephone_number)}}">
                     </div>
 
                     <div class="space-y-2">
@@ -72,7 +70,7 @@
                         FAX番号
                         </label>
                         <x-input-error :messages="$errors->get('fax_nunber')" class="mt-2" />
-                        <input id="fax_number" name="fax_number" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="FAX番号" value="{{old('fax_number')}}">
+                        <input id="fax_number" name="fax_number" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="FAX番号" value="{{old('fax_number', $supplier->fax_number)}}">
                     </div>
 
                     <div class="space-y-2">
@@ -80,7 +78,7 @@
                         備考
                         </label>
                         <x-input-error :messages="$errors->get('remark')" class="mt-2" />
-                        <textarea id="remark" name="remark" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="備考" >{{old('remark')}}</textarea>
+                        <textarea id="remark" name="remark" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="備考" >{{old('remark', $supplier->remark)}}</textarea>
                     </div>
 
                     
