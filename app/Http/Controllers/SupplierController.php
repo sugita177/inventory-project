@@ -28,7 +28,7 @@ class SupplierController extends Controller
     }
 
     public function index() {
-        $suppliers = Supplier::all();
+        $suppliers = Supplier::where('name', '!=', '未登録')->get();
         return view('supplier.index', compact('suppliers'));
     }
 

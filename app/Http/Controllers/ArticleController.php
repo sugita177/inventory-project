@@ -92,15 +92,36 @@ class ArticleController extends Controller
         $data_list = [];
 
         $interpreter->addObserver(function (array $row) use (&$data_list){
+            $category = Category::where('name', $row[2])->first();
+            if(is_null($category)) {
+                $category_id = Category::where('name', '未登録')->first()->id;
+            } else {
+                $category_id = $category->id;
+            }
+
+            $place    = Place::where('name', $row[3])->first();
+            if(is_null($place)) {
+                $place_id = Place::where('name', '未登録')->first()->id;
+            } else {
+                $place_id = $place->id;
+            }
+
+            $supplier = Supplier::where('name', $row[5])->first();
+            if(is_null($supplier)) {
+                $supplier_id = Supplier::where('name', '未登録')->first()->id;
+            } else {
+                $supplier_id = $supplier->id;
+            }
+
             $data_list[] = [
-                'name'     => $row[0],
-                'detail'   => $row[1],
-                'category' => $row[2],
-                'place'    => $row[3],
-                'unit'     => $row[4],
-                'supplier' => $row[5],
-                'remark'   => $row[6],
-                'user_id'  => auth()->id()
+                'name'        => $row[0],
+                'detail'      => $row[1],
+                'category_id' => $category_id,
+                'place_id'    => $place_id,
+                'unit'        => $row[4],
+                'supplier_id' => $place_id,
+                'remark'      => $row[6],
+                'user_id'     => auth()->id()
             ];
         });
 

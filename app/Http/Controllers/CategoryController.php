@@ -24,7 +24,7 @@ class CategoryController extends Controller
     }
 
     public function index() {
-        $categories = Category::all();
+        $categories = Category::where('name', '!=', '未登録')->get();
         return view('category.index', compact('categories'));
     }
 

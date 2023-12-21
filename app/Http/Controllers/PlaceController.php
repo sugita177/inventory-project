@@ -24,7 +24,7 @@ class PlaceController extends Controller
     }
 
     public function index() {
-        $places = Place::all();
+        $places = Place::where('name', '!=', '未登録')->get();
         return view('place.index', compact('places'));
     }
 
