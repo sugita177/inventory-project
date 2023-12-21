@@ -119,7 +119,7 @@ class ArticleController extends Controller
                 'category_id' => $category_id,
                 'place_id'    => $place_id,
                 'unit'        => $row[4],
-                'supplier_id' => $place_id,
+                'supplier_id' => $supplier_id,
                 'remark'      => $row[6],
                 'user_id'     => auth()->id()
             ];
