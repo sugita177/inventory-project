@@ -79,7 +79,18 @@ class ArticleController extends Controller
     }
 
     public function csvImport(Request $request) {
-        $file_name = $request->file('csv_file');
+        //$file_name = $request->file('csv_file');
+        $validated = $request -> validate(
+            [
+                'csv_file' => 'required | file | mimetypes:text/csv'
+            ],
+            [
+                'csv_file.required' => 'ファイルは必ず指定してください。',
+                'csv_file.file' => 'ファイルを指定してください。',
+                'csv_file.mimetypes' => 'CSVファイルを指定してください。'
+            ]
+        );
+
 
         $config      = new LexerConfig();
         $interpreter = new Interpreter();
@@ -125,7 +136,7 @@ class ArticleController extends Controller
             ];
         });
 
-        $lexer->parse($file_name, $interpreter);
+        $lexer->parse($validated['csv_file'], $interpreter);
 
         $count = 0;
         foreach($data_list as $row){
