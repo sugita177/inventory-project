@@ -24,7 +24,7 @@
                         開始日
                         </label>
                         <x-input-error :messages="$errors->get('check_start_date')" class="mt-2" />
-                        <input id="check_start_date" name="check_start_date" type="date" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="開始日" value="{{old('check_start_date')}}">
+                        <input id="check_start_date" name="check_start_date" type="date" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-white-300 dark:border-gray-700 dark:text-gray-400" placeholder="開始日" value="{{old('check_start_date')}}">
                     </div>
 
                     <div class="space-y-2">
@@ -32,7 +32,7 @@
                         開始時刻
                         </label>
                         <x-input-error :messages="$errors->get('check_start_time')" class="mt-2" />
-                        <input id="check_start_time" name="check_start_time" type="time" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="開始時刻" value="{{old('check_start_time')}}">
+                        <input id="check_start_time" name="check_start_time" type="time" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-white-300 dark:border-gray-700 dark:text-gray-400" placeholder="開始時刻" value="{{old('check_start_time')}}">
                     </div>
 
                     
