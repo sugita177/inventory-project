@@ -22,7 +22,7 @@ class ArticleSeeder extends Seeder
             'unit' => '缶',
             'supplier_id' => 2,
             'remark' =>'1/4以下になったら購入すること',
-            'user_id' => 2
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => 'ペンキ白',
@@ -32,7 +32,7 @@ class ArticleSeeder extends Seeder
             'unit' => '缶',
             'supplier_id' => 2,
             'remark' =>'1/4以下になったら購入すること',
-            'user_id' => 2
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => 'ペンキ黄',
@@ -42,7 +42,7 @@ class ArticleSeeder extends Seeder
             'unit' => '缶',
             'supplier_id' => 2,
             'remark' =>'1/4以下になったら購入すること',
-            'user_id' => 2
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => 'ペンキ用はけ',
@@ -52,7 +52,7 @@ class ArticleSeeder extends Seeder
             'unit' => '本',
             'supplier_id' => 2,
             'remark' =>'新品は5本以上ストックしておく',
-            'user_id' => 3
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => '電気配線',
@@ -62,7 +62,7 @@ class ArticleSeeder extends Seeder
             'unit' => '巻',
             'supplier_id' => 3,
             'remark' =>'半分以下になったら購入する',
-            'user_id' => 3
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => '電気配線',
@@ -72,7 +72,7 @@ class ArticleSeeder extends Seeder
             'unit' => '巻',
             'supplier_id' => 3,
             'remark' =>'半分以下になったら購入する',
-            'user_id' => 2
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => 'サンダー本体',
@@ -82,7 +82,7 @@ class ArticleSeeder extends Seeder
             'unit' => '個',
             'supplier_id' => 4,
             'remark' => 'メーカー注意',
-            'user_id' => 3
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => 'サンダー替刃',
@@ -92,7 +92,7 @@ class ArticleSeeder extends Seeder
             'unit' => '箱',
             'supplier_id' => 4,
             'remark' => '',
-            'user_id' => 2
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => 'バフ',
@@ -102,7 +102,7 @@ class ArticleSeeder extends Seeder
             'unit' => '箱',
             'supplier_id' => 4,
             'remark' => '',
-            'user_id' => 3
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => '溶接用ガス',
@@ -112,7 +112,7 @@ class ArticleSeeder extends Seeder
             'unit' => '本',
             'supplier_id' => 5,
             'remark' => '半分以下になったら注文すること',
-            'user_id' => 2
+            'user_id' => rand(2, 4)
         ]);
         Article::create([
             'name' => '溶接用ガス',
@@ -122,7 +122,7 @@ class ArticleSeeder extends Seeder
             'unit' => '本',
             'supplier_id' => 5,
             'remark' => '予備用に満タン1本はストックしておく',
-            'user_id' => 2
+            'user_id' => rand(2, 4)
         ]);
     }
 }

@@ -34,10 +34,7 @@ class CheckFactory extends Factory
         }
         $end_time_date_time = new DateTime("2023-12-25 {$end_hour}:{$end_minute}:00");
         $end_time = $end_time_date_time->format('H:i:s');
-        $completed = false;
-        if(rand(0, 10)/10 < 0.7) {
-            $completed = true;
-        }
+        $completed = true;
 
         return [
             'check_start_date' => $start_date,
@@ -45,7 +42,7 @@ class CheckFactory extends Factory
             'check_end_date' => $end_date,
             'check_end_time' => $end_time,
             'completed' => $completed,
-            'user_id' => rand(1, 3)
+            'user_id' => rand(2, 4)
         ];
     }
 }

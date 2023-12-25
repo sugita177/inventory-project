@@ -43,12 +43,12 @@ class CheckController extends Controller
     }
 
     public function index() {
-        $checks = Check::orderBy('check_start_date', 'asc')->orderBY('check_start_time', 'asc')->get();
+        $checks = Check::orderBy('check_start_date', 'desc')->orderBY('check_start_time', 'desc')->get();
         return view('check.index', compact('checks'));
     }
 
     public function show(Check $check) {
-        $inventories = Inventory::where('check_id', $check->id)->get();
+        $inventories = Inventory::where('check_id', $check->id)->orderBy('article_id')->get();
         return view('check.show', compact('check', 'inventories'));
     }
 
@@ -99,7 +99,7 @@ class CheckController extends Controller
     }
 
     public function orderIndex() {
-        $completed_checks = Check::where('completed', true)->get();
+        $completed_checks = Check::where('completed', true)->orderBy('check_start_date', 'desc')->orderBY('check_start_time', 'desc')->get();
         return view('check.order_index', compact('completed_checks'));
     }
 

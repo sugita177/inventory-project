@@ -21,15 +21,21 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => '山田',
-            'email' => 'yamada@example.com',
-            'password' => 'yamada1234'
+            'name' => '桜井',
+            'email' => 'sakurai@example.com',
+            'password' => 'sakurai1234'
         ]);
 
         User::create([
-            'name' => '田中',
-            'email' => 'tanaka@example.com',
-            'password' => 'tanaka1234'
+            'name' => '坂崎',
+            'email' => 'sakazaki@example.com',
+            'password' => 'sakazaki1234'
+        ]);
+
+        User::create([
+            'name' => '高見沢',
+            'email' => 'takamizawa@example.com',
+            'password' => 'takamizawa1234'
         ]);
 
     }
