@@ -30,6 +30,11 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
+            'name' => '工具',
+            'detail' => '整備用の工具類'
+        ]);
+
+        Category::create([
             'name' => '溶接',
             'detail' => '溶接用のガス、工具など'
         ]);

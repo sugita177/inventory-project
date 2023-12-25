@@ -43,7 +43,7 @@ class CheckController extends Controller
     }
 
     public function index() {
-        $checks = Check::all();
+        $checks = Check::orderBy('check_start_date', 'asc')->orderBY('check_start_time', 'asc')->get();
         return view('check.index', compact('checks'));
     }
 

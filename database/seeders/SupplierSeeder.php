@@ -42,21 +42,21 @@ class SupplierSeeder extends Seeder
         ]);
 
         Supplier::create([
-            'name' => '宮岡ガス',
-            'address' => '神奈川県横浜市都筑区△△町7-89',
-            'posting_code' => '333-4444',
-            'telephone_number' => '12-3456-7890',
-            'fax_number' => '12-3456-7899',
-            'remark' => '溶接用ガス'
-        ]);
-
-        Supplier::create([
             'name' => '寺田機械',
             'address' => '神奈川県川崎市川崎区○x町1-3-6',
             'posting_code' => '333-5555',
             'telephone_number' => '34-5678-9012',
             'fax_number' => '34-5678-9013',
             'remark' => '各種工具類'
+        ]);
+
+        Supplier::create([
+            'name' => '宮岡ガス',
+            'address' => '神奈川県横浜市都筑区△△町7-89',
+            'posting_code' => '333-4444',
+            'telephone_number' => '12-3456-7890',
+            'fax_number' => '12-3456-7899',
+            'remark' => '溶接用ガス'
         ]);
     }
 }
